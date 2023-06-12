@@ -1,6 +1,5 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import logo from "@/logo.svg";
+import "@/App/App.css";
 
 function App() {
   return (
@@ -18,6 +17,7 @@ function App() {
         >
           Learn React
         </a>
+        <button>lintTest</button>
       </header>
     </div>
   );
