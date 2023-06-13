@@ -1,9 +1,8 @@
-import React from "react";
 import { render, screen } from "@testing-library/react";
-import App from "./App";
+import App from "@/App/App";
 
-test("renders learn react link", () => {
+test("lint test", () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const buttonEl = screen.getByRole("button", { name: "lintTest" });
+  expect(buttonEl).toHaveTextContent("lintTest");
 });
