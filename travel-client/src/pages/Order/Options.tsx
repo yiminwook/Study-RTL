@@ -60,8 +60,8 @@ interface OptionProps {
 const Option = ({ name }: OptionProps) => {
   return (
     <form>
-      <label htmlFor={`${name}-option`}></label>{" "}
-      <input type="checkbox" name={`${name}-option`} />
+      <input type="checkbox" name={`${name}-option`} />{" "}
+      <label htmlFor={`${name}-option`}>{name}</label>
     </form>
   );
 };
