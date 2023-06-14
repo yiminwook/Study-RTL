@@ -4,7 +4,7 @@ interface ProductItemProps extends ItemType {}
 
 const ProductItem = ({ name, imagePath }: ProductItemProps) => {
   return (
-    <div>
+    <div className="item">
       <div>
         <img
           src={`http://localhost:5000/${imagePath}`}

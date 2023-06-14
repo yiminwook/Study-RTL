@@ -31,13 +31,20 @@ const Items = () => {
 
   return (
     <section className="order-product-item">
-      {!showError ? (
-        items.map((item) => (
-          <ProductItem key={`${item.name} product`} {...item} />
-        ))
-      ) : (
-        <ErrorBanner message="에러가 발생했습니다." />
-      )}
+      <div>
+        <h2>주문 종류</h2>
+        <p>하나의 가격:</p>
+        <p>총 가격:</p>
+      </div>
+      <div>
+        {!showError ? (
+          items.map((item) => (
+            <ProductItem key={`${item.name} product`} {...item} />
+          ))
+        ) : (
+          <ErrorBanner message="에러가 발생했습니다." />
+        )}
+      </div>
     </section>
   );
 };
