@@ -1,5 +1,11 @@
+import OrderSection from "@/pages/Order/Section";
+
 const Order = () => {
-  return <section></section>;
+  return (
+    <>
+      <OrderSection />
+    </>
+  );
 };
 
 export default Order;
