@@ -28,18 +28,25 @@ const Options = ({}: OptionsProps) => {
   }, []);
 
   return (
-    <section>
-      {!showError ? (
-        <ul>
-          {options.map((option) => (
-            <li key={`${option.name}-list`}>
-              <Option {...option} />
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <ErrorBanner message="에러가 발생했습니다." />
-      )}
+    <section style={{ display: "flex", marginTop: 20 }}>
+      <div style={{ width: "50%" }}>
+        {!showError ? (
+          <ul>
+            {options.map((option) => (
+              <li key={`${option.name}-list`}>
+                <Option {...option} />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <ErrorBanner message="에러가 발생했습니다." />
+        )}
+      </div>
+      <div style={{ width: "50%" }}>
+        <h2>Total Price:</h2>
+        <br />
+        <button>주문</button>
+      </div>
     </section>
   );
 };

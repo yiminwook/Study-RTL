@@ -1,4 +1,4 @@
-import { ItemType } from "@/pages/Order/Section";
+import { ItemType } from "@/pages/Order/Items";
 
 interface ProductItemProps extends ItemType {}
 

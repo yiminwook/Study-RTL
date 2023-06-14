@@ -1,11 +1,11 @@
 import { render, screen } from "@testing-library/react";
-import OrderSection from "@/pages/Order/Section";
 import mockServer from "@/mocks/server";
 import { rest } from "msw";
+import OrderPage from "@/pages/Order";
 
 describe("order page test", () => {
   test("display product images form server", async () => {
-    render(<OrderSection />);
+    render(<OrderPage />);
 
     const productImages = (await screen.findAllByAltText(
       /product$/i
@@ -24,13 +24,13 @@ describe("order page test", () => {
       })
     );
 
-    render(<OrderSection />);
+    render(<OrderPage />);
     const errorBanner = await screen.findByTestId("error-banner");
     expect(errorBanner).toHaveTextContent("에러가 발생했습니다.");
   });
 
   test("fetch option information from server", async () => {
-    render(<OrderSection />);
+    render(<OrderPage />);
     const optionCheckboxes = (await screen.findAllByRole(
       "checkbox"
     )) as HTMLInputElement[];
