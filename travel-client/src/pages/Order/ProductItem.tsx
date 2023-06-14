@@ -11,11 +11,14 @@ const ProductItem = ({ name, imagePath }: ProductItemProps) => {
         style={{ width: "75%" }}
       />
       <form style={{ marginTop: "10px" }}>
-        <label style={{ textAlign: "center" }}>{name}</label>
+        <label style={{ textAlign: "center" }} htmlFor="quantity">
+          {name}
+        </label>
         <input
           style={{ marginLeft: 7 }}
           type="number"
           min={0}
+          name="quantity"
           defaultValue={0}
         />
       </form>
