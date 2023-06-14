@@ -1,8 +1,9 @@
 import OrderPage from "@/pages/Order";
+import "@/pages/global.scss";
 
 const App = () => {
   return (
-    <div style={{ padding: "64px" }}>
+    <div id="app">
       <OrderPage />
     </div>
   );

@@ -30,7 +30,7 @@ const Items = () => {
   }, []);
 
   return (
-    <section>
+    <section className="order-product-item">
       {!showError ? (
         items.map((item) => (
           <ProductItem key={`${item.name} product`} {...item} />

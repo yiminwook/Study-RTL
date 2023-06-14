@@ -4,10 +4,7 @@ interface ErrorBannerProps {
 
 const ErrorBanner = ({ message = "에러입니다." }: ErrorBannerProps) => {
   return (
-    <div
-      data-testid="error-banner"
-      style={{ backgroundColor: "red", color: "white" }}
-    >
+    <div data-testid="error-banner" className="error-banner">
       {message}
     </div>
   );

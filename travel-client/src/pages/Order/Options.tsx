@@ -28,8 +28,8 @@ const Options = ({}: OptionsProps) => {
   }, []);
 
   return (
-    <section style={{ display: "flex", marginTop: 20 }}>
-      <div style={{ width: "50%" }}>
+    <section className="order-product-option">
+      <div>
         {!showError ? (
           <ul>
             {options.map((option) => (
@@ -42,7 +42,7 @@ const Options = ({}: OptionsProps) => {
           <ErrorBanner message="에러가 발생했습니다." />
         )}
       </div>
-      <div style={{ width: "50%" }}>
+      <div>
         <h2>Total Price:</h2>
         <br />
         <button>주문</button>
