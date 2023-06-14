@@ -5,7 +5,7 @@ import { rest } from "msw";
 
 describe("order page test", () => {
   test("display product images form server", async () => {
-    render(<OrderSection optionType="products" />);
+    render(<OrderSection />);
 
     const productImages = (await screen.findAllByAltText(
       /product$/i
@@ -24,8 +24,16 @@ describe("order page test", () => {
       })
     );
 
-    render(<OrderSection optionType="products" />);
+    render(<OrderSection />);
     const errorBanner = await screen.findByTestId("error-banner");
     expect(errorBanner).toHaveTextContent("에러가 발생했습니다.");
+  });
+
+  test("fetch option information from server", async () => {
+    render(<OrderSection />);
+    const optionCheckboxes = (await screen.findAllByRole(
+      "checkbox"
+    )) as HTMLInputElement[];
+    expect(optionCheckboxes).toHaveLength(2);
   });
 });
