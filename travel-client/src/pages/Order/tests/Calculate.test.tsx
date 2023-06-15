@@ -1,7 +1,7 @@
-import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import OrderPage from "@/pages/Order";
 import { OrderContextProvider } from "@/contexts/OrderContext";
+import { render, screen } from "@/mocks/utiles";
 
 describe("calculate test", () => {
   test("update product's total when products change", async () => {
