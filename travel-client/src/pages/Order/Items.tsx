@@ -32,11 +32,6 @@ const Items = () => {
   return (
     <section className="order-product-item">
       <div>
-        <h2>주문 종류</h2>
-        <p>하나의 가격:</p>
-        <p>상품 총 가격:</p>
-      </div>
-      <div>
         {!showError ? (
           items.map((item) => (
             <ProductItem key={`${item.name} product`} {...item} />
