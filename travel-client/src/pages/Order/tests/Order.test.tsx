@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import mockServer from "@/mocks/server";
 import { rest } from "msw";
 import OrderPage from "@/pages/Order";
+import userEvent from "@testing-library/user-event";
 
 describe("order page test", () => {
   test("display product images form server", async () => {
