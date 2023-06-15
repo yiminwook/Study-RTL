@@ -2,7 +2,6 @@ import ErrorBanner from "@/components/ErrorBanner";
 import { useOrderContext } from "@/contexts/OrderContext";
 import axios from "axios";
 import { ChangeEvent, useCallback, useEffect, useState } from "react";
-import Desc from "@/pages/Order/Desc";
 
 interface OptionType {
   name: string;
@@ -13,6 +12,8 @@ interface OptionsProps {}
 const Options = ({}: OptionsProps) => {
   const [options, setOptions] = useState<OptionType[]>([]);
   const [showError, setShowError] = useState(false);
+  const { totals } = useOrderContext();
+
   const loadOption = async () => {
     try {
       const response = await axios.get<OptionType[]>(
@@ -20,7 +21,7 @@ const Options = ({}: OptionsProps) => {
       );
       setOptions(() => response.data);
     } catch (error) {
-      console.error(error);
+      // console.error(error);
       setShowError(() => true);
     }
   };
@@ -32,6 +33,9 @@ const Options = ({}: OptionsProps) => {
   return (
     <section className="order-product-option">
       <div>
+        <div>
+          <h2>옵션 가격: {totals.options}</h2>
+        </div>
         {!showError ? (
           <ul>
             {options.map((option) => (
@@ -45,7 +49,7 @@ const Options = ({}: OptionsProps) => {
         )}
       </div>
       <div>
-        <h2>Total Price:</h2>
+        <h2>총 가격: {totals.total}</h2>
         <br />
         <button>주문</button>
       </div>
