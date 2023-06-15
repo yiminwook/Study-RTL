@@ -1,7 +1,8 @@
 import ErrorBanner from "@/components/ErrorBanner";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import ProductItem from "./ProductItem";
+import Desc from "@/pages/Order/Desc";
+import ProductItem from "@/pages/Order/ProductItem";
 
 export interface ItemType {
   name: string;
@@ -31,6 +32,7 @@ const Items = () => {
 
   return (
     <section className="order-product-item">
+      <Desc type="products" />
       <div>
         {!showError ? (
           items.map((item) => (

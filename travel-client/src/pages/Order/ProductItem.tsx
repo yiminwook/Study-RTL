@@ -28,11 +28,11 @@ const ProductItem = ({ name, imagePath }: ProductItemProps) => {
         />
       </div>
       <form>
-        <label htmlFor="quantity">{name}</label>
+        <label htmlFor={`${name} quantity`}>{name}</label>
         <input
           type="number"
           min={0}
-          name="quantity"
+          id={`${name} quantity`}
           defaultValue={0}
           onChange={handleChange}
         />

@@ -1,13 +1,15 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import OrderPage from "@/pages/Order";
+import { OrderContextProvider } from "@/contexts/OrderContext";
 
 describe("calculate test", () => {
   test("update product's total when products change", async () => {
-    render(<OrderPage />);
-    const productTotal = screen.getByText("상품 총 가격: ", { exact: false });
+    render(<OrderPage />, { wrapper: OrderContextProvider });
+    const productTotal = screen.getByText("총 가격: ", { exact: false });
     expect(productTotal).toHaveTextContent("0");
 
+    // label for과 id를 매칭
     const americaInput = (await screen.findByRole("spinbutton", {
       name: "America",
     })) as HTMLInputElement;

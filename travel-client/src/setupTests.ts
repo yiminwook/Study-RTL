@@ -6,7 +6,7 @@ import "@testing-library/jest-dom";
 import mockServer from "@/mocks/server";
 
 //테스트 전에 1번 실행
-beforeAll(() => mockServer.listen());
+beforeAll(() => mockServer.listen({ onUnhandledRequest: "bypass" }));
 //테스트가 끝난후
 afterEach(() => mockServer.resetHandlers());
 //모든 테스트가 끝난후 1번 실행

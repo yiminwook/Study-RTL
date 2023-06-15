@@ -1,6 +1,8 @@
 import ErrorBanner from "@/components/ErrorBanner";
+import { useOrderContext } from "@/contexts/OrderContext";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { ChangeEvent, useCallback, useEffect, useState } from "react";
+import Desc from "@/pages/Order/Desc";
 
 interface OptionType {
   name: string;
@@ -58,10 +60,26 @@ interface OptionProps {
 }
 
 const Option = ({ name }: OptionProps) => {
+  const { options, updateItemCount } = useOrderContext();
+
+  const handleChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      updateItemCount({
+        itemName: name,
+        orderType: "options",
+        newItemCount: e.target.checked ? "1" : "0",
+      });
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [options]
+  );
+
   return (
-    <form>
-      <input type="checkbox" name={`${name}-option`} />{" "}
-      <label htmlFor={`${name}-option`}>{name}</label>
-    </form>
+    <>
+      <form>
+        <input type="checkbox" id={`${name} option`} onChange={handleChange} />{" "}
+        <label htmlFor={`${name} option`}>{name}</label>
+      </form>
+    </>
   );
 };
