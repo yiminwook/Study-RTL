@@ -1,5 +1,5 @@
 const Complete = () => {
-  return <section></section>;
+  return <div></div>;
 };
 
 export default Complete;

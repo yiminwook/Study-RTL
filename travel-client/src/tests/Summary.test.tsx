@@ -1,9 +1,14 @@
 import { render, screen } from "@testing-library/react";
 import Summary from "@/pages/Summary";
+import { MemoryRouter } from "react-router-dom";
 
 describe("summary page test", () => {
   test("주문확인 체크박스를 눌러야 버튼이 활성화", () => {
-    render(<Summary />);
+    render(
+      <MemoryRouter initialEntries={["/summary"]}>
+        <Summary />
+      </MemoryRouter>
+    );
 
     const checkbox = screen.getByRole("checkbox", {
       name: "주문하려는 것을 확인하셨나요?",

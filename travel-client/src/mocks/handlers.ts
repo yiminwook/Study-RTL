@@ -27,6 +27,10 @@ const handlers = [
       ])
     );
   }),
+  rest.post("http://locahost:5000/order", (req, res, ctx) => {
+    let dummyData = [{ orderNumber: 123456, price: 2000 }];
+    return res(ctx.json(dummyData));
+  }),
 ];
 
 export default handlers;

@@ -2,6 +2,7 @@ import ErrorBanner from "@/components/ErrorBanner";
 import { useOrderContext } from "@/contexts/OrderContext";
 import axios from "axios";
 import { ChangeEvent, useCallback, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 interface OptionType {
   name: string;
@@ -51,7 +52,7 @@ const Options = ({}: OptionsProps) => {
       <div>
         <h2>총 가격: {totals.total}</h2>
         <br />
-        <button>주문</button>
+        <Link to="/summary">주문</Link>
       </div>
     </section>
   );

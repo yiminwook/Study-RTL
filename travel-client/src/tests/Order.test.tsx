@@ -2,10 +2,15 @@ import { render, screen } from "@/mocks/utiles";
 import mockServer from "@/mocks/server";
 import { rest } from "msw";
 import OrderPage from "@/pages/Order";
+import { MemoryRouter } from "react-router-dom";
 
 describe("order page test", () => {
   test("display product images form server", async () => {
-    render(<OrderPage />);
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <OrderPage />
+      </MemoryRouter>
+    );
 
     const productImages = (await screen.findAllByAltText(
       /product$/i
@@ -24,13 +29,21 @@ describe("order page test", () => {
       })
     );
 
-    render(<OrderPage />);
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <OrderPage />
+      </MemoryRouter>
+    );
     const errorBanner = await screen.findByTestId("error-banner");
     expect(errorBanner).toHaveTextContent("에러가 발생했습니다.");
   });
 
   test("fetch option information from server", async () => {
-    render(<OrderPage />);
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <OrderPage />
+      </MemoryRouter>
+    );
     const optionCheckboxes = (await screen.findAllByRole(
       "checkbox"
     )) as HTMLInputElement[];

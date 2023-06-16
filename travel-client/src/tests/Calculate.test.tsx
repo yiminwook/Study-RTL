@@ -1,12 +1,15 @@
 import userEvent from "@testing-library/user-event";
 import OrderPage from "@/pages/Order";
-import { OrderContextProvider } from "@/contexts/OrderContext";
 import { render, screen } from "@/mocks/utiles";
-import { useEffect } from "react";
+import { MemoryRouter } from "react-router-dom";
 
 describe("calculate test", () => {
   test("update product's total when products change", async () => {
-    render(<OrderPage />, { wrapper: OrderContextProvider });
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <OrderPage />
+      </MemoryRouter>
+    );
     const productTotal = screen.getByText("상품 가격: ", { exact: false });
     expect(productTotal).toHaveTextContent("0");
 
@@ -27,7 +30,11 @@ describe("calculate test", () => {
   });
 
   test("update options's total when options change", async () => {
-    render(<OrderPage />);
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <OrderPage />
+      </MemoryRouter>
+    );
 
     const optionsTotal = screen.getByText("옵션 가격: ", { exact: false });
     expect(optionsTotal).toHaveTextContent("0");
@@ -54,7 +61,11 @@ describe("calculate test", () => {
 
 describe("total price of goods and options", () => {
   test("total price starts with 0 and updating total price when adding one product", async () => {
-    render(<OrderPage />);
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <OrderPage />
+      </MemoryRouter>
+    );
     const total = screen.getByText("총 가격: ", { exact: false });
 
     expect(total).toHaveTextContent("0");
@@ -68,7 +79,11 @@ describe("total price of goods and options", () => {
   });
 
   test("updating total price when adding one option", async () => {
-    render(<OrderPage />);
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <OrderPage />
+      </MemoryRouter>
+    );
     const total = screen.getByText("총 가격:", { exact: false });
 
     const insuranceCheckbox = await screen.findByRole("checkbox", {
@@ -80,7 +95,11 @@ describe("total price of goods and options", () => {
   });
 
   test("updating total price when removing option and product", async () => {
-    render(<OrderPage />);
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <OrderPage />
+      </MemoryRouter>
+    );
     const total = screen.getByText("총 가격:", { exact: false });
 
     const insuranceCheckbox = await screen.findByRole("checkbox", {
