@@ -1,6 +1,6 @@
 import mockServer from "@/mocks/server";
 import App from "@/pages/App";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
 
@@ -87,5 +87,11 @@ describe("complete test", () => {
 
     const firstPageLink = screen.getByRole("link", { name: "첫페이지로" });
     userEvent.click(firstPageLink);
+
+    await waitFor(() => {
+      screen.getByRole("spinbutton", { name: "America" });
+    });
+
+    // await screen.findByRole("spinbutton", { name: "America" });
   });
 });
