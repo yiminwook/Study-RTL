@@ -1,21 +1,9 @@
-import mockServer from "@/mocks/server";
 import App from "@/pages/App";
-import { toBeInTheDocument } from "@testing-library/jest-dom/matchers";
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
 
 describe("complete test", () => {
-  // test("render complete page test", () => {
-  //   render(
-  //     <MemoryRouter initialEntries={["/complete"]}>
-  //       <App />
-  //     </MemoryRouter>
-  //   );
-
-  //   screen.getByRole("heading", { name: "주문 확인" });
-  // });
-
   test("from order to order completion", async () => {
     render(
       <MemoryRouter initialEntries={["/"]}>
@@ -89,6 +77,7 @@ describe("complete test", () => {
     const firstPageLink = screen.getByRole("link", { name: "첫페이지로" });
     userEvent.click(firstPageLink);
 
+    // order page
     const productsTotal = screen.getByText("상품 가격: 0");
     expect(productsTotal).toBeInTheDocument();
 

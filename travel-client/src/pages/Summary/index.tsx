@@ -16,7 +16,7 @@ const Summary = () => {
   return (
     <section>
       <h1>주문 확인</h1>
-      <h2>{`여행 상품: ${totals.products}`}</h2>
+      <h2>여행 상품: {totals.products}</h2>
       <ul>
         {productsArray.map(([key, value]) => (
           <li key={`${key} list`}>
