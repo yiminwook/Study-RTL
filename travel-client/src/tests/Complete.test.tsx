@@ -1,5 +1,6 @@
 import mockServer from "@/mocks/server";
 import App from "@/pages/App";
+import { toBeInTheDocument } from "@testing-library/jest-dom/matchers";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
@@ -88,10 +89,13 @@ describe("complete test", () => {
     const firstPageLink = screen.getByRole("link", { name: "첫페이지로" });
     userEvent.click(firstPageLink);
 
-    await waitFor(() => {
-      screen.getByRole("spinbutton", { name: "America" });
-    });
+    const productsTotal = screen.getByText("상품 가격: 0");
+    expect(productsTotal).toBeInTheDocument();
 
-    // await screen.findByRole("spinbutton", { name: "America" });
+    const optionTotal = screen.getByText("옵션 가격: 0");
+    expect(optionTotal).toBeInTheDocument();
+
+    await screen.findByRole("spinbutton", { name: "America" });
+    await screen.findByRole("checkbox", { name: "Insurance" });
   });
 });
