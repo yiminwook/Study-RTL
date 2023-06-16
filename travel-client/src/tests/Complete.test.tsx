@@ -1,3 +1,4 @@
+import mockServer from "@/mocks/server";
 import App from "@/pages/App";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
@@ -42,7 +43,7 @@ describe("complete test", () => {
     const link = screen.getByRole("link", { name: "주문", exact: true });
     userEvent.click(link);
 
-    // complete page
+    // summary page
     expect(link).not.toBeInTheDocument();
 
     const summaryHeading = screen.getByRole("heading", { name: "주문 확인" });
@@ -70,7 +71,7 @@ describe("complete test", () => {
     });
     userEvent.click(confirmOrderButton);
 
-    //summary page
+    // complete page
     expect(confirmOrderButton).not.toBeInTheDocument();
     const loading = screen.getByText(/loading/i);
     expect(loading).toBeInTheDocument();

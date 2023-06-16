@@ -39,6 +39,7 @@ const OrderContext = createContext({
     options: 0,
     total: 0,
   },
+  reset: () => {},
 });
 
 /** useContext */
@@ -59,6 +60,15 @@ export const OrderContextProvider = (props: any) => {
     options: 0,
     total: 0,
   });
+
+  const reset = useCallback(() => {
+    setOrderCounts(() => {
+      return {
+        products: new Map(),
+        options: new Map(),
+      };
+    });
+  }, []);
 
   const updateItemCount = useCallback(
     ({
@@ -110,7 +120,7 @@ export const OrderContextProvider = (props: any) => {
   }, [orderCounts]);
 
   const value = useMemo(() => {
-    return { ...orderCounts, totals, updateItemCount };
+    return { ...orderCounts, totals, updateItemCount, reset };
   }, [orderCounts, totals]);
 
   return <OrderContext.Provider value={value} {...props} />;
